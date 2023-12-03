@@ -1,31 +1,21 @@
-import { db } from "@/lib/db";
+import { Skeleton } from "@/components/ui/skeleton"
+import { Info } from "./_components/info"
+import { BoardList } from "./_components/board-list"
 
 
-const OrganizationIdPage = () => {
-    async function create(formData:FormData) {
-        "use server";
-        const title = formData.get("title") as string
 
-        await db.board.create({
-            data: {
-                title
-            }
-        })
-    }
-
+const OrganizationIdPage = async() => {
 
 
     return (
-        <div>
-            <form action={create} >
-                <input
-                    id="title"
-                    name="title"
-                    required
-                    placeholder="Enter a board title"
-                    className="border-black border p-1"
-                />
-            </form>
+        <div className=" w-full mb-20" >
+            <Info/>
+            <Skeleton className="my-4" />
+            <div
+                className="px-2 md:px-4"
+            >
+                <BoardList/>
+            </div>
         </div>
     )
 }
