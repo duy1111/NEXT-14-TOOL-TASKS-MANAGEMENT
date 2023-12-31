@@ -57,17 +57,15 @@ const handler = async (data: InputType): Promise<ReturnType> => {
             }
         });
 
-        revalidatePath(`/board/${boardId}`)
-        return { data: card }
+
     }catch(error){
         return {
             error: "Failed to create"
         }
     }
-    revalidatePath(`/board/${boardId}`);
-    return {
-        data: list
-    }
+
+    revalidatePath(`/board/${boardId}`)
+    return { data: card }
 }
 
 export const createCard = createSafeAction(CreateCard, handler)
