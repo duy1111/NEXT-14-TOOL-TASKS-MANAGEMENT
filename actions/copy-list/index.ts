@@ -22,7 +22,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     try{
         const listToCopy = await db.list.findUnique({
             where:{
-                id: boardId,
+                id: id,
                 boardId,
                 board:{
                     orgId
